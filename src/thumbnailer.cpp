@@ -18,7 +18,7 @@
 #include <cmath>
 #include <filesystem>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace fs = std::filesystem;
 
 static constexpr int kFrameWidth = 240;
@@ -53,7 +53,7 @@ Thumbnailer::~Thumbnailer()
 
 std::string Thumbnailer::defaultCoverFolder()
 {
-    return base::paths::cacheHome() + "/cutefish/cutefish-video-player/covers";
+    return base::paths::cacheHome() + "/properdesktop/properdesktop-video-player/covers";
 }
 
 void Thumbnailer::setSource(const std::string& source)

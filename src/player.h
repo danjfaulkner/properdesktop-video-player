@@ -85,7 +85,7 @@ public:
     // For a video output: the handle its render context is made on, once
     // the player has started (renderWanted then fires). Null before.
     std::shared_ptr<MpvHandle> handle() const;
-    cutefish::base::WeakPtr<Player> weakPtr() { return m_weakFactory.getWeakPtr(); }
+    properdesktop::base::WeakPtr<Player> weakPtr() { return m_weakFactory.getWeakPtr(); }
     // A video output can draw: files load only after that.
     void setRenderReady();
     // The render context went away; video comes back with the next one.
@@ -153,13 +153,13 @@ public:
     // at a new size every frame, mpv's own afterwards.
     void setResizing(bool resizing);
 
-    cutefish::base::Signal<Property> changed;
-    cutefish::base::Signal<> fileLoaded;
-    cutefish::base::Signal<const std::string&> playbackFailed;
-    cutefish::base::Signal<const std::string&, bool> screenshotSaved;
-    cutefish::base::Signal<bool> subtitleAdded;
+    properdesktop::base::Signal<Property> changed;
+    properdesktop::base::Signal<> fileLoaded;
+    properdesktop::base::Signal<const std::string&> playbackFailed;
+    properdesktop::base::Signal<const std::string&, bool> screenshotSaved;
+    properdesktop::base::Signal<bool> subtitleAdded;
     // mpv has started and wants a video output.
-    cutefish::base::Signal<> renderWanted;
+    properdesktop::base::Signal<> renderWanted;
 
 private:
     // Reply ids: screenshots count up from FirstScreenshot.
@@ -237,5 +237,5 @@ private:
     std::string m_hardwareDecoder;
     bool m_videoActive = false;
 
-    cutefish::base::WeakPtrFactory<Player> m_weakFactory{this};
+    properdesktop::base::WeakPtrFactory<Player> m_weakFactory{this};
 };

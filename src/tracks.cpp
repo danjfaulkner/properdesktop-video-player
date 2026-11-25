@@ -7,9 +7,9 @@
 #include "base/i18n.h"
 #include "base/strings.h"
 
-using namespace cutefish;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
+using namespace properdesktop;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
 
 namespace tracks
 {

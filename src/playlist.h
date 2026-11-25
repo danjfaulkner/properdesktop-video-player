@@ -68,14 +68,14 @@ public:
     static std::string titleFor(const std::string& url);
 
     // Rows added, removed, moved or replaced.
-    cutefish::base::Signal<> rowsChanged;
+    properdesktop::base::Signal<> rowsChanged;
     // One row's data (current mark, length) changed.
-    cutefish::base::Signal<int> rowChanged;
-    cutefish::base::Signal<> countChanged;
+    properdesktop::base::Signal<int> rowChanged;
+    properdesktop::base::Signal<> countChanged;
     // Also when the same file is made current again (Repeat One).
-    cutefish::base::Signal<> currentIndexChanged;
-    cutefish::base::Signal<> repeatModeChanged;
-    cutefish::base::Signal<> navigationChanged;
+    properdesktop::base::Signal<> currentIndexChanged;
+    properdesktop::base::Signal<> repeatModeChanged;
+    properdesktop::base::Signal<> navigationChanged;
 
 private:
     int indexOf(const std::string& url) const;

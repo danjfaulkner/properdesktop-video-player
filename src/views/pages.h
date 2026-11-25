@@ -15,7 +15,7 @@
 class MainWindow;
 
 // A short message over the video, with an optional action.
-class Osd : public cutefish::ui::View
+class Osd : public properdesktop::ui::View
 {
 public:
     Osd();
@@ -25,26 +25,26 @@ public:
 
     void show(const std::string& message, int timeoutMs, std::string actionText, std::function<void()> action);
     void hide();
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
     bool acceptsPointer() const override { return isVisible() && m_opacity.target() > 0; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void hoverChanged() override;
 
 private:
     void fadeTo(double opacity);
 
-    cutefish::ui::Label* m_label;
+    properdesktop::ui::Label* m_label;
     views::PillButton* m_action;
     std::function<void()> m_callback;
-    cutefish::base::Timer m_hideTimer;
+    properdesktop::base::Timer m_hideTimer;
     views::Tween m_opacity{0, std::chrono::milliseconds(180)};
 };
 
 // The play or pause glyph a click on the video flashes.
-class Flash : public cutefish::ui::View
+class Flash : public properdesktop::ui::View
 {
 public:
     Flash();
@@ -53,13 +53,13 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
     void apply();
 
-    cutefish::ui::Icon* m_icon;
-    std::unique_ptr<cutefish::ui::Animation> m_animation;
+    properdesktop::ui::Icon* m_icon;
+    std::unique_ptr<properdesktop::ui::Animation> m_animation;
     double m_value = 0;
     double m_scale = 1;
 };
@@ -69,22 +69,22 @@ class RecentRow : public views::Clickable
 public:
     explicit RecentRow(const PlayerSettings::RecentFile& file, double resumeAt, bool last);
 
-    cutefish::ui::SizeF sizeHint() const override { return {0, 52}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {0, 52}; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
-    cutefish::ui::Label* m_name;
-    cutefish::ui::Label* m_folder;
-    cutefish::ui::Label* m_resume;
+    properdesktop::ui::Label* m_name;
+    properdesktop::ui::Label* m_folder;
+    properdesktop::ui::Label* m_resume;
     bool m_last;
 };
 
 // How to open a video, and the recently watched ones; scrolls when the
 // window is too short for them.
-class EmptyPage : public cutefish::ui::ScrollView
+class EmptyPage : public properdesktop::ui::ScrollView
 {
 public:
     explicit EmptyPage(MainWindow& owner);
@@ -101,20 +101,20 @@ private:
 
     MainWindow& m_owner;
     Column* m_column;
-    cutefish::ui::ThemeIcon* m_icon;
-    cutefish::ui::Label* m_title;
-    cutefish::ui::Label* m_subtitle;
+    properdesktop::ui::ThemeIcon* m_icon;
+    properdesktop::ui::Label* m_title;
+    properdesktop::ui::Label* m_subtitle;
     views::PillButton* m_openFile;
     views::PillButton* m_openUrl;
-    cutefish::ui::Label* m_recentLabel;
+    properdesktop::ui::Label* m_recentLabel;
     views::Clickable* m_clear;
-    cutefish::ui::Label* m_clearLabel;
-    cutefish::ui::View* m_card;
+    properdesktop::ui::Label* m_clearLabel;
+    properdesktop::ui::View* m_card;
     std::vector<RecentRow*> m_rows;
 };
 
 // The page in place of the picture when a file cannot be played.
-class ErrorPage : public cutefish::ui::View
+class ErrorPage : public properdesktop::ui::View
 {
 public:
     explicit ErrorPage(MainWindow& owner);
@@ -126,8 +126,8 @@ protected:
     void layout() override;
 
 private:
-    cutefish::ui::Label* m_title;
-    cutefish::ui::Label* m_detail;
+    properdesktop::ui::Label* m_title;
+    properdesktop::ui::Label* m_detail;
     views::PillButton* m_another;
     views::PillButton* m_next;
 };

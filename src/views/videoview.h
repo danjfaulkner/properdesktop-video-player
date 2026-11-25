@@ -20,7 +20,7 @@ class SoftwareVideo;
 struct MpvHandle;
 struct mpv_render_context;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class Subsurface;
 }
 
@@ -30,12 +30,12 @@ class Subsurface;
 class VideoSurface
 {
 public:
-    VideoSurface(Player& player, cutefish::ui::Window* window);
+    VideoSurface(Player& player, properdesktop::ui::Window* window);
     // Stops the thread; the player hears its picture is gone.
     ~VideoSurface();
 
     bool isValid() const;
-    void setGeometry(const cutefish::ui::RectF& rect);
+    void setGeometry(const properdesktop::ui::RectF& rect);
 
     // On the window's loop: the thread could not set up mpv's OpenGL output.
     std::function<void()> onFailed;
@@ -47,9 +47,9 @@ private:
     void fail();
 
     Player& m_player;
-    cutefish::base::WeakPtr<Player> m_playerWeak;
+    properdesktop::base::WeakPtr<Player> m_playerWeak;
     std::shared_ptr<MpvHandle> m_handle;
-    std::unique_ptr<cutefish::ui::Subsurface> m_surface;
+    std::unique_ptr<properdesktop::ui::Subsurface> m_surface;
     std::thread m_thread;
     std::mutex m_mutex;
     std::condition_variable m_wake;
@@ -57,13 +57,13 @@ private:
     bool m_dirty = true;
     std::atomic<bool> m_contextReady = false;
     // Taken on the window's loop for the thread to hand back.
-    cutefish::base::WeakPtr<VideoSurface> m_selfWeak;
-    cutefish::base::WeakPtrFactory<VideoSurface> m_weakFactory{this};
+    properdesktop::base::WeakPtr<VideoSurface> m_selfWeak;
+    properdesktop::base::WeakPtrFactory<VideoSurface> m_weakFactory{this};
 };
 
 // The video under everything else: on Wayland a hole the subsurface shows
 // through, headless the software picture.
-class VideoView : public cutefish::ui::View
+class VideoView : public properdesktop::ui::View
 {
 public:
     explicit VideoView(MainWindow& owner);
@@ -77,14 +77,14 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
-    cutefish::ui::RectF windowRect() const;
+    properdesktop::ui::RectF windowRect() const;
     void attachSoftware();
 
     MainWindow& m_owner;
     std::unique_ptr<VideoSurface> m_surface;
     std::unique_ptr<SoftwareVideo> m_software;
-    cutefish::base::Subscription m_frames;
+    properdesktop::base::Subscription m_frames;
 };

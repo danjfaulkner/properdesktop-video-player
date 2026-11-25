@@ -49,21 +49,21 @@ public:
     // Asks for the frame of bucket; only the latest request is worked on.
     void request(int bucket);
     // Opaque, 240 px wide; null when not taken yet.
-    cutefish::ui::Image image(int bucket) const;
+    properdesktop::ui::Image image(int bucket) const;
 
     static std::string defaultCoverFolder();
 
-    cutefish::base::Signal<> sourceChanged;
-    cutefish::base::Signal<> durationChanged;
-    cutefish::base::Signal<> revisionChanged;
-    cutefish::base::Signal<> coverChanged;
+    properdesktop::base::Signal<> sourceChanged;
+    properdesktop::base::Signal<> durationChanged;
+    properdesktop::base::Signal<> revisionChanged;
+    properdesktop::base::Signal<> coverChanged;
 
 private:
     void run();
-    void addFrame(int bucket, cutefish::ui::Image image, uint64_t generation, double step);
+    void addFrame(int bucket, properdesktop::ui::Image image, uint64_t generation, double step);
     // Asks the worker for the cover once the file and its length are known.
     void askCover();
-    void addCover(const cutefish::ui::Image& image, uint64_t generation);
+    void addCover(const properdesktop::ui::Image& image, uint64_t generation);
     void setCover(const std::string& cover);
     // Whether the worker should drop what it is doing: quitting or a new file.
     bool cancelled(uint64_t generation) const;
@@ -77,7 +77,7 @@ private:
     bool m_coverAsked = false;
     bool m_staleCoversRemoved = false;
 
-    cutefish::base::LoopHandle m_loop;
+    properdesktop::base::LoopHandle m_loop;
     std::thread m_thread;
     mutable std::mutex m_mutex;
     std::condition_variable m_wake;
@@ -89,10 +89,10 @@ private:
     double m_step = 1;
     int m_pending = -1;
     bool m_coverWanted = false;
-    std::unordered_map<int, cutefish::ui::Image> m_frames;
+    std::unordered_map<int, properdesktop::ui::Image> m_frames;
     // The worker's mpv, woken to cut a wait short.
     mpv_handle* m_activeMpv = nullptr;
 
-    cutefish::base::WeakPtr<Thumbnailer> m_weak;
-    cutefish::base::WeakPtrFactory<Thumbnailer> m_weakFactory{this};
+    properdesktop::base::WeakPtr<Thumbnailer> m_weak;
+    properdesktop::base::WeakPtrFactory<Thumbnailer> m_weakFactory{this};
 };

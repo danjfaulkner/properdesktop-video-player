@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: cutefish-video-player\n"
-"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"Project-Id-Version: properdesktop-video-player\n"
+"Report-Msgid-Bugs-To: https://github.com/danjfaulkner\n"
 "POT-Creation-Date: 2026-11-13 16:33+0800\n"
 "PO-Revision-Date: 2026-11-13 16:33+0800\n"
 "Last-Translator: \n"
@@ -21,7 +21,7 @@ msgid "Playing a video"
 msgstr "Memainkan video"
 
 #: src/sleepinhibitor.cpp src/views/dialogs.cpp src/views/mainwindow.cpp
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Video Player"
 msgstr "Pemain Video"
 
@@ -654,10 +654,10 @@ msgstr "Putar ke Kiri"
 msgid "Rotate Right"
 msgstr "Putar ke Kanan"
 
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Play videos and other media files"
 msgstr "Mainkan video dan fail media lain"
 
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Video;Movie;Film;Player;Subtitles;"
 msgstr "Video;Filem;Wayang;Pemain;Sari Kata;Movie;Player;Subtitles;"

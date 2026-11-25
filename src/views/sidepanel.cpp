@@ -17,11 +17,11 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using views::white;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
-using cutefish::i18n::trNoop;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
+using properdesktop::i18n::trNoop;
 
 // The plate's corner radius, and the gap its tabs and rows keep to its edges.
 static constexpr double kRadius = 20;

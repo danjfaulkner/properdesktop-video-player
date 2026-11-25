@@ -14,7 +14,7 @@
 
 #include <cmath>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
 namespace views

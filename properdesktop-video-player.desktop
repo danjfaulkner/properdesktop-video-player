@@ -5,7 +5,7 @@
 Version=1.0
 Name=Video Player
 Comment=Play videos and other media files
-Exec=cutefish-video-player %U
+Exec=properdesktop-video-player %U
 Icon=multimedia-video-player
 Terminal=false
 Type=Application

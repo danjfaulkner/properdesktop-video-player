@@ -19,12 +19,12 @@
 #include <vector>
 
 // What the window works with, and the D-Bus face of the running player
-// (org.cutefish.VideoPlayer at /VideoPlayer): a second launch hands its files
+// (org.properdesktop.VideoPlayer at /VideoPlayer): a second launch hands its files
 // over through open().
 class Application
 {
 public:
-    static constexpr const char* kService = "org.cutefish.VideoPlayer";
+    static constexpr const char* kService = "org.properdesktop.VideoPlayer";
     static constexpr const char* kPath = "/VideoPlayer";
 
     // settingsFile is video-player.conf; covers go in coverFolder (the
@@ -44,7 +44,7 @@ public:
 
     // Publishes the D-Bus object; done before the name is taken, so a second
     // launch that finds the name always finds someone to hand its files to.
-    bool publish(cutefish::base::dbus::Connection* bus);
+    bool publish(properdesktop::base::dbus::Connection* bus);
 
     // 1:05 or 1:02:05; hours are shown whenever reference reaches an hour,
     // so elapsed and total times keep the same shape.
@@ -69,10 +69,10 @@ public:
     void open(const std::vector<std::string>& arguments, const std::string& activationToken = {});
     void activateWindow();
 
-    cutefish::base::Signal<const std::vector<std::string>&, const std::vector<std::string>&> openRequested;
+    properdesktop::base::Signal<const std::vector<std::string>&, const std::vector<std::string>&> openRequested;
     // The window comes forward, with an activation token from another
     // launch or an empty one.
-    cutefish::base::Signal<const std::string&> activationRequested;
+    properdesktop::base::Signal<const std::string&> activationRequested;
 
 private:
     Playlist m_playlist;
@@ -82,7 +82,7 @@ private:
     Thumbnailer m_thumbnailer;
     DurationProbe m_durationProbe;
     Player::Size m_launchVideoSize;
-    std::unique_ptr<cutefish::base::dbus::Object> m_object;
-    cutefish::base::dbus::Connection* m_bus = nullptr;
-    std::vector<cutefish::base::Subscription> m_subscriptions;
+    std::unique_ptr<properdesktop::base::dbus::Object> m_object;
+    properdesktop::base::dbus::Connection* m_bus = nullptr;
+    std::vector<properdesktop::base::Subscription> m_subscriptions;
 };

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: cutefish-video-player\n"
-"Report-Msgid-Bugs-To: https://github.com/cutefishos\n"
+"Project-Id-Version: properdesktop-video-player\n"
+"Report-Msgid-Bugs-To: https://github.com/danjfaulkner\n"
 "POT-Creation-Date: 2026-11-13 16:33+0800\n"
 "PO-Revision-Date: 2026-11-13 12:00+0800\n"
 "Last-Translator: \n"
@@ -21,7 +21,7 @@ msgid "Playing a video"
 msgstr "Воспроизведение видео"
 
 #: src/sleepinhibitor.cpp src/views/dialogs.cpp src/views/mainwindow.cpp
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Video Player"
 msgstr "Видеоплеер"
 
@@ -654,10 +654,10 @@ msgstr "Повернуть влево"
 msgid "Rotate Right"
 msgstr "Повернуть вправо"
 
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Play videos and other media files"
 msgstr "Воспроизведение видео и других медиафайлов"
 
-#: cutefish-video-player.desktop
+#: properdesktop-video-player.desktop
 msgid "Video;Movie;Film;Player;Subtitles;"
 msgstr "Видео;Фильм;Кино;Плеер;Проигрыватель;Субтитры;Video;Player;"

@@ -10,7 +10,7 @@
 #include <filesystem>
 #include <string_view>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace strings = base::strings;
 
 struct FullParts : urls::Parts

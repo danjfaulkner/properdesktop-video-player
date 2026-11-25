@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(cutefish-video-player VERSION 1.0 LANGUAGES CXX)
+project(properdesktop-video-player VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(GNUInstallDirs)
 include(CTest)
 
-find_package(CutefishToolkit REQUIRED)
+find_package(ProperDesktopToolkit REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(Mpv REQUIRED IMPORTED_TARGET mpv>=2.0)
 pkg_check_modules(ICU REQUIRED IMPORTED_TARGET icu-uc icu-i18n)
@@ -36,7 +36,7 @@ add_library(player-backend STATIC
 target_include_directories(player-backend PUBLIC src)
 # libmpv is opened on first use (src/mpvlibrary.cpp); only its headers are needed here.
 target_include_directories(player-backend PUBLIC ${Mpv_INCLUDE_DIRS})
-target_link_libraries(player-backend PUBLIC Cutefish::Toolkit ${CMAKE_DL_LIBS} PRIVATE PkgConfig::ICU)
+target_link_libraries(player-backend PUBLIC ProperDesktop::Toolkit ${CMAKE_DL_LIBS} PRIVATE PkgConfig::ICU)
 
 # The glyphs, built in.
 file(GLOB VIDEO_PLAYER_ICONS CONFIGURE_DEPENDS ${PROJECT_SOURCE_DIR}/icons/*.svg)
@@ -60,7 +60,7 @@ add_library(player-ui STATIC
     ${VIDEO_PLAYER_EMBEDDED}
 )
 target_include_directories(player-ui PUBLIC src src/views)
-target_link_libraries(player-ui PUBLIC player-backend Cutefish::Toolkit)
+target_link_libraries(player-ui PUBLIC player-backend ProperDesktop::Toolkit)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_compile_definitions(${PROJECT_NAME} PRIVATE VIDEO_PLAYER_VERSION="${PROJECT_VERSION}")
@@ -68,8 +68,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE player-ui)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-cutefish_add_translations(cutefish-video-player SOURCES src DESKTOP_FILES cutefish-video-player.desktop)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/cutefish-video-player.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+properdesktop_add_translations(properdesktop-video-player SOURCES src DESKTOP_FILES properdesktop-video-player.desktop)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/properdesktop-video-player.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 
 if(BUILD_TESTING)
     add_subdirectory(tests)

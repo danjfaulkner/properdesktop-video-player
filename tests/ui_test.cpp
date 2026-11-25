@@ -27,8 +27,8 @@
 #include <filesystem>
 #include <functional>
 
-namespace base = cutefish::base;
-namespace ui = cutefish::ui;
+namespace base = properdesktop::base;
+namespace ui = properdesktop::ui;
 namespace fs = std::filesystem;
 using namespace std::chrono_literals;
 

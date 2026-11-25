@@ -31,12 +31,12 @@ public:
     void probe(const std::vector<std::string>& urls);
 
     // seconds is 0 when the file has no length or could not be opened.
-    cutefish::base::Signal<const std::string&, double> found;
+    properdesktop::base::Signal<const std::string&, double> found;
 
 private:
     void run();
 
-    cutefish::base::LoopHandle m_loop;
+    properdesktop::base::LoopHandle m_loop;
     std::thread m_thread;
     std::mutex m_mutex;
     std::condition_variable m_wake;
@@ -47,6 +47,6 @@ private:
     std::deque<std::string> m_queue;
     mpv_handle* m_activeMpv = nullptr;
 
-    cutefish::base::WeakPtr<DurationProbe> m_weak;
-    cutefish::base::WeakPtrFactory<DurationProbe> m_weakFactory{this};
+    properdesktop::base::WeakPtr<DurationProbe> m_weak;
+    properdesktop::base::WeakPtrFactory<DurationProbe> m_weakFactory{this};
 };

@@ -12,9 +12,9 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using views::white;
-using cutefish::i18n::tr;
+using properdesktop::i18n::tr;
 
 static constexpr double kSidePadding = 14;
 static constexpr double kTopPadding = 10;
@@ -349,7 +349,7 @@ void VolumeControl::paint(Painter& painter)
     // The boost above 100% is drawn in a warning colour.
     if (shown > notch)
         painter.drawRoundedRect({track.x + track.width * notch, track.y, track.width * (shown - notch), track.height},
-                                {2, 0, Corners::Circular}, cutefish::ui::accent::orange);
+                                {2, 0, Corners::Circular}, properdesktop::ui::accent::orange);
     painter.drawRoundedRect({track.x + std::round(track.width * notch) - 1,
                              track.y + rounding::centeredStart(track.height, 10), 2, 10},
                             {1, 0, Corners::Circular}, white(0.6));

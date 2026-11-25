@@ -31,7 +31,7 @@ struct MpvHandle
     void notifyEvents() { notify(eventsQueued, eventsTask); }
     void notifyFrame() { notify(frameQueued, frameTask); }
 
-    void attach(cutefish::base::LoopHandle handle, std::function<void()> events)
+    void attach(properdesktop::base::LoopHandle handle, std::function<void()> events)
     {
         std::lock_guard lock(mutex);
         loop = std::move(handle);
@@ -76,7 +76,7 @@ private:
     }
 
     std::mutex mutex;
-    cutefish::base::LoopHandle loop;
+    properdesktop::base::LoopHandle loop;
     bool attached = false;
     std::function<void()> eventsTask;
     std::function<void()> frameTask;

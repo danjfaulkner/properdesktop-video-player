@@ -10,7 +10,7 @@
 
 class MainWindow;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class ListView;
 class ScrollView;
 }
@@ -23,26 +23,26 @@ public:
 
     void setChecked(bool checked);
     void setText(const std::string& text);
-    cutefish::ui::SizeF sizeHint() const override { return {0, 34}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {0, 34}; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void enabledChanged() override;
 
 private:
-    cutefish::ui::Icon* m_check;
-    cutefish::ui::Label* m_label;
-    cutefish::ui::Label* m_detail;
+    properdesktop::ui::Icon* m_check;
+    properdesktop::ui::Label* m_label;
+    properdesktop::ui::Label* m_detail;
     bool m_checkable;
 };
 
 // A column of side panel sections and rows, in a scroll view.
-class PanelColumn : public cutefish::ui::View
+class PanelColumn : public properdesktop::ui::View
 {
 public:
     // A section heading; the first section has no top margin.
-    cutefish::ui::Label* addSection(const std::string& text, bool first = false);
+    properdesktop::ui::Label* addSection(const std::string& text, bool first = false);
     template<typename T, typename... Args>
     T* addRow(Args&&... args)
     {
@@ -52,7 +52,7 @@ public:
     // Room on both sides, so the scroll view and its bar reach the panel's edges.
     void setSideInset(double inset) { m_sideInset = inset; }
 
-    cutefish::ui::SizeF sizeHint() const override;
+    properdesktop::ui::SizeF sizeHint() const override;
     double heightForWidth(double width) const override;
 
 protected:
@@ -63,7 +63,7 @@ private:
 };
 
 // The playlist, the tracks and playback settings.
-class SidePanel : public cutefish::ui::View
+class SidePanel : public properdesktop::ui::View
 {
 public:
     explicit SidePanel(MainWindow& owner);
@@ -82,14 +82,14 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
-    bool scroll(const cutefish::ui::ScrollEvent&) override { return true; }
-    bool keyPress(const cutefish::ui::KeyEvent& event) override;
+    void paint(properdesktop::ui::Painter& painter) override;
+    bool scroll(const properdesktop::ui::ScrollEvent&) override { return true; }
+    bool keyPress(const properdesktop::ui::KeyEvent& event) override;
     // Dropped files join the playlist.
-    bool canDrop(const cutefish::ui::DropOffer& offer) const override;
-    uint32_t dragUpdate(const cutefish::ui::DragEvent& event) override;
-    uint32_t drop(const cutefish::ui::DragEvent& event) override;
-    void focusIn(cutefish::ui::FocusReason) override;
+    bool canDrop(const properdesktop::ui::DropOffer& offer) const override;
+    uint32_t dragUpdate(const properdesktop::ui::DragEvent& event) override;
+    uint32_t drop(const properdesktop::ui::DragEvent& event) override;
+    void focusIn(properdesktop::ui::FocusReason) override;
     void focusOut() override;
 
 private:
@@ -104,14 +104,14 @@ private:
 
     MainWindow& m_owner;
     Tabs* m_tabs;
-    cutefish::ui::View* m_playlistPage;
-    cutefish::ui::ListView* m_list;
-    cutefish::ui::Label* m_emptyLabel;
+    properdesktop::ui::View* m_playlistPage;
+    properdesktop::ui::ListView* m_list;
+    properdesktop::ui::Label* m_emptyLabel;
     views::ControlButton* m_repeat;
     views::ControlButton* m_add;
-    cutefish::ui::ScrollView* m_tracksView;
+    properdesktop::ui::ScrollView* m_tracksView;
     PanelColumn* m_tracks;
-    cutefish::ui::ScrollView* m_playbackView;
+    properdesktop::ui::ScrollView* m_playbackView;
     PanelColumn* m_playback;
     int m_currentRow = -1;
     bool m_dragging = false;

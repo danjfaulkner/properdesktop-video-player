@@ -20,7 +20,7 @@
 #include <filesystem>
 #include <fstream>
 
-namespace base = cutefish::base;
+namespace base = properdesktop::base;
 namespace fs = std::filesystem;
 
 class BackendTest : public testing::Test

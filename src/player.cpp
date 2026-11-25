@@ -13,10 +13,10 @@
 #include <clocale>
 #include <cmath>
 
-using namespace cutefish;
-using cutefish::i18n::tr;
+using namespace properdesktop;
+using properdesktop::i18n::tr;
 
-static const base::LogCategory cfMpv("cutefish.videoplayer.mpv", base::LogLevel::Warning);
+static const base::LogCategory cfMpv("properdesktop.videoplayer.mpv", base::LogLevel::Warning);
 
 // Runs on an mpv thread when events are waiting.
 static void wakeup(void* context)
@@ -111,7 +111,7 @@ bool Player::ensurePlayer()
     setOption("sub-codepage", "auto");
     setOption("sub-file-paths", "subs:Subs:Subtitles:subtitles");
     setOption("screenshot-format", "png");
-    setOption("audio-client-name", "cutefish-video-player");
+    setOption("audio-client-name", "properdesktop-video-player");
     setOption("volume-max", 150);
 
     // What was set before mpv started.

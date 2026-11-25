@@ -10,7 +10,7 @@
 #include <algorithm>
 #include <chrono>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace strings = base::strings;
 
 static constexpr const char* kGroup = "Resume";

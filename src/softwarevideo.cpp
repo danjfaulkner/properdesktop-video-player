@@ -9,7 +9,7 @@
 
 #include <algorithm>
 
-using namespace cutefish;
+using namespace properdesktop;
 
 // Runs on an mpv thread whenever a new frame is due.
 static void frameUpdate(void* context)

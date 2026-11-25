@@ -23,7 +23,7 @@
 #include <functional>
 #include <string>
 
-using namespace cutefish;
+using namespace properdesktop;
 using namespace std::chrono_literals;
 
 static void runUntil(ui::Application& app, const std::function<bool()>& done, std::chrono::milliseconds timeout)

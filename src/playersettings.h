@@ -59,17 +59,17 @@ public:
     void removeRecentFile(const std::string& url);
     void clearRecentFiles();
 
-    cutefish::base::Signal<> volumeChanged;
-    cutefish::base::Signal<> mutedChanged;
-    cutefish::base::Signal<> resumePlaybackChanged;
-    cutefish::base::Signal<> repeatModeChanged;
-    cutefish::base::Signal<> subtitleScaleChanged;
-    cutefish::base::Signal<> folderPlaylistChanged;
-    cutefish::base::Signal<> audioLanguageChanged;
-    cutefish::base::Signal<> subtitleLanguageChanged;
-    cutefish::base::Signal<> screenshotFolderChanged;
-    cutefish::base::Signal<> lastFolderChanged;
-    cutefish::base::Signal<> recentFilesChanged;
+    properdesktop::base::Signal<> volumeChanged;
+    properdesktop::base::Signal<> mutedChanged;
+    properdesktop::base::Signal<> resumePlaybackChanged;
+    properdesktop::base::Signal<> repeatModeChanged;
+    properdesktop::base::Signal<> subtitleScaleChanged;
+    properdesktop::base::Signal<> folderPlaylistChanged;
+    properdesktop::base::Signal<> audioLanguageChanged;
+    properdesktop::base::Signal<> subtitleLanguageChanged;
+    properdesktop::base::Signal<> screenshotFolderChanged;
+    properdesktop::base::Signal<> lastFolderChanged;
+    properdesktop::base::Signal<> recentFilesChanged;
 
 private:
     template<typename T>

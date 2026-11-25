@@ -12,10 +12,10 @@
 #include <algorithm>
 #include <cmath>
 
-using namespace cutefish::ui;
+using namespace properdesktop::ui;
 using views::white;
 using namespace std::chrono_literals;
-using cutefish::i18n::tr;
+using properdesktop::i18n::tr;
 
 Osd::Osd()
     : m_label(views::addLabel(this, {}, 0, white()))

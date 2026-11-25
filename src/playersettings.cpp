@@ -11,7 +11,7 @@
 #include <algorithm>
 #include <filesystem>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace fs = std::filesystem;
 
 static const std::string kRecentKey = "Recent/Files";

@@ -18,11 +18,11 @@
 #include <chrono>
 #include <cmath>
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 
-static const base::LogCategory cfVideo("cutefish.videoplayer.video", base::LogLevel::Warning);
+static const base::LogCategory cfVideo("properdesktop.videoplayer.video", base::LogLevel::Warning);
 
 static void* procAddress(void*, const char* name)
 {

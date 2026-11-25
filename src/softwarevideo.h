@@ -31,17 +31,17 @@ public:
     bool hasContext() const { return m_context != nullptr; }
     // The current frame at width x height device pixels, opaque; black when
     // mpv has none.
-    const cutefish::ui::Image& render(int width, int height);
+    const properdesktop::ui::Image& render(int width, int height);
     // Drops the context, as a window going away does.
     void release();
 
     // mpv has a new frame to draw; render() again.
-    cutefish::base::Signal<> frameDue;
+    properdesktop::base::Signal<> frameDue;
 
 private:
-    cutefish::base::WeakPtr<Player> m_player;
+    properdesktop::base::WeakPtr<Player> m_player;
     std::shared_ptr<MpvHandle> m_handle;
     mpv_render_context* m_context = nullptr;
-    cutefish::ui::Image m_image;
-    cutefish::base::WeakPtrFactory<SoftwareVideo> m_weakFactory{this};
+    properdesktop::ui::Image m_image;
+    properdesktop::base::WeakPtrFactory<SoftwareVideo> m_weakFactory{this};
 };

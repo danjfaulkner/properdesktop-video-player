@@ -14,7 +14,7 @@
 #include <array>
 #include <utility>
 
-using namespace cutefish;
+using namespace properdesktop;
 
 // ISO 639-2 has a bibliographic code apart from the terminology one for these.
 static constexpr std::array<std::pair<std::string_view, std::string_view>, 20> kBibliographic = {{

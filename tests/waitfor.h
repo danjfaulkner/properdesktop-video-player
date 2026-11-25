@@ -10,7 +10,7 @@
 
 // Runs the loop until done() holds or the time is up; done()'s last answer.
 template<typename Done>
-bool waitFor(cutefish::base::EventLoop& loop, Done done, std::chrono::milliseconds timeout = std::chrono::seconds(5))
+bool waitFor(properdesktop::base::EventLoop& loop, Done done, std::chrono::milliseconds timeout = std::chrono::seconds(5))
 {
     using Clock = std::chrono::steady_clock;
     const Clock::time_point deadline = Clock::now() + timeout;
@@ -25,7 +25,7 @@ bool waitFor(cutefish::base::EventLoop& loop, Done done, std::chrono::millisecon
 }
 
 // Runs the loop for the time given.
-inline void runFor(cutefish::base::EventLoop& loop, std::chrono::milliseconds time)
+inline void runFor(properdesktop::base::EventLoop& loop, std::chrono::milliseconds time)
 {
     waitFor(loop, [] { return false; }, time);
 }

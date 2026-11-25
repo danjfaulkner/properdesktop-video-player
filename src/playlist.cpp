@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <unordered_set>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace fs = std::filesystem;
 
 static const std::unordered_set<std::string_view>& mediaSuffixes()

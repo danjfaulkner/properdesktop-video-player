@@ -13,7 +13,7 @@ class Thumbnailer;
 
 // A press jumps there, a drag scrubs on keyframes and lands
 // exactly on release; hovering shows the frame and time under the pointer.
-class SeekBar : public cutefish::ui::View
+class SeekBar : public properdesktop::ui::View
 {
 public:
     explicit SeekBar(MainWindow& owner);
@@ -27,20 +27,20 @@ public:
 
     // The bar is 20 tall; its view is 6 taller above and below for the hit area.
     static constexpr double kHitMargin = 6;
-    cutefish::ui::SizeF sizeHint() const override { return {0, 20 + 2 * kHitMargin}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {0, 20 + 2 * kHitMargin}; }
     bool acceptsPointer() const override { return m_enabled; }
 
     std::function<void()> onDraggingChanged;
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void pointerEnter() override;
     void pointerLeave() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerMove(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
-    void hoverMove(const cutefish::ui::PointerEvent& event) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerMove(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
+    void hoverMove(const properdesktop::ui::PointerEvent& event) override;
 
 private:
     class Preview;
@@ -60,14 +60,14 @@ private:
     bool m_dragging = false;
     double m_dragTime = 0;
     double m_mouseX = 0;
-    views::Tween m_trackHeight{4, std::chrono::milliseconds(120), cutefish::ui::Animation::Easing::OutCubic};
-    views::Tween m_handleScale{0, std::chrono::milliseconds(120), cutefish::ui::Animation::Easing::OutCubic};
+    views::Tween m_trackHeight{4, std::chrono::milliseconds(120), properdesktop::ui::Animation::Easing::OutCubic};
+    views::Tween m_handleScale{0, std::chrono::milliseconds(120), properdesktop::ui::Animation::Easing::OutCubic};
     Preview* m_preview;
 };
 
 // The speaker mutes; its wheel and the slider set the
 // volume, which boosts past the notch at 100% up to 150%.
-class VolumeControl : public cutefish::ui::View
+class VolumeControl : public properdesktop::ui::View
 {
 public:
     explicit VolumeControl(MainWindow& owner);
@@ -75,24 +75,24 @@ public:
     void update(int volume, bool muted);
     void retranslate();
     bool isDragging() const { return m_dragging; }
-    cutefish::ui::SizeF sizeHint() const override { return {36 + 2 + 72, 36}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {36 + 2 + 72, 36}; }
     bool acceptsPointer() const override { return true; }
 
     std::function<void()> onDraggingChanged;
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void pointerEnter() override;
     void pointerLeave() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerMove(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
-    bool scroll(const cutefish::ui::ScrollEvent& event) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerMove(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
+    bool scroll(const properdesktop::ui::ScrollEvent& event) override;
 
 private:
     void apply(double x);
-    cutefish::ui::RectF trackRect() const;
+    properdesktop::ui::RectF trackRect() const;
 
     MainWindow& m_owner;
     views::ControlButton* m_mute;
@@ -104,7 +104,7 @@ private:
 
 // The floating panel at the bottom: volume, the transport,
 // the side panel and full screen; the timeline below.
-class ControlBar : public cutefish::ui::View
+class ControlBar : public properdesktop::ui::View
 {
 public:
     explicit ControlBar(MainWindow& owner);
@@ -118,14 +118,14 @@ public:
     void retranslate();
     bool isBusy() const { return m_seekBar->isDragging() || m_volume->isDragging(); }
     bool isHoveredBar() const { return isHovered(); }
-    cutefish::ui::SizeF sizeHint() const override { return {kWidth, kHeight}; }
+    properdesktop::ui::SizeF sizeHint() const override { return {kWidth, kHeight}; }
     // Presses and wheels on the plate stay off the video below it.
     bool acceptsPointer() const override { return true; }
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
-    bool scroll(const cutefish::ui::ScrollEvent&) override { return true; }
+    void paint(properdesktop::ui::Painter& painter) override;
+    bool scroll(const properdesktop::ui::ScrollEvent&) override { return true; }
 
 private:
     MainWindow& m_owner;
@@ -135,10 +135,10 @@ private:
     views::ControlButton* m_skipForward;
     views::ControlButton* m_panel;
     views::ControlButton* m_fullScreen;
-    cutefish::ui::Label* m_elapsed;
+    properdesktop::ui::Label* m_elapsed;
     SeekBar* m_seekBar;
     views::Clickable* m_totalArea;
-    cutefish::ui::Label* m_total;
-    cutefish::ui::Label* m_metrics;
+    properdesktop::ui::Label* m_total;
+    properdesktop::ui::Label* m_metrics;
     bool m_showRemaining = false;
 };

@@ -1,6 +1,6 @@
 # Video Player
 
-The video player of Cutefish Desktop. It plays local files and network
+The video player of Proper Desktop. It plays local files and network
 streams through libmpv, with subtitles, folder playlists, resume and seek-bar
 previews, behind overlay controls that hide while the video plays.
 
@@ -8,7 +8,7 @@ previews, behind overlay controls that hide while the video plays.
 
 ## Dependencies
 
-Video Player uses cutefish-toolkit, libmpv and ICU.
+Video Player uses properdesktop-toolkit, libmpv and ICU.
 
 ```sh
 sudo apt install cmake pkg-config libmpv-dev libicu-dev libgtest-dev

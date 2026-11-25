@@ -7,13 +7,13 @@
 
 #include <algorithm>
 
-using namespace cutefish;
+using namespace properdesktop;
 using base::dbus::MethodCall;
 using base::dbus::ObjectPath;
 using base::dbus::Variant;
 using base::dbus::VariantMap;
 
-static const base::LogCategory cfMpris("cutefish.videoplayer.mpris", base::LogLevel::Warning);
+static const base::LogCategory cfMpris("properdesktop.videoplayer.mpris", base::LogLevel::Warning);
 
 static const char* const kPath = "/org/mpris/MediaPlayer2";
 static const char* const kRootInterface = "org.mpris.MediaPlayer2";

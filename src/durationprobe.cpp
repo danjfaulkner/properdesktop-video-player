@@ -10,7 +10,7 @@
 #include <chrono>
 #include <clocale>
 
-using namespace cutefish;
+using namespace properdesktop;
 
 DurationProbe::DurationProbe()
 {

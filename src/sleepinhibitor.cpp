@@ -6,7 +6,7 @@
 #include "base/event_loop.h"
 #include "base/i18n.h"
 
-using namespace cutefish;
+using namespace properdesktop;
 using base::dbus::Connection;
 using base::dbus::Proxy;
 using base::dbus::Reply;
@@ -104,7 +104,7 @@ void SleepInhibitor::acquire(Mode mode, uint64_t generation)
                                 .send("UnInhibit", *cookie);
                     }
                 },
-                "cutefish-video-player", tr("Playing a video"));
+                "properdesktop-video-player", tr("Playing a video"));
     } else if (mode == Mode::Suspend) {
         const Proxy login1(m_system, kLogin1Service, kLogin1Path, kLogin1Manager);
         m_calls[call] = login1.callAsync(

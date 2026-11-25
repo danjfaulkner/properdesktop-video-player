@@ -17,16 +17,16 @@
 #include <memory>
 #include <string>
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class ScrollView;
 }
 
 namespace views
 {
 
-using cutefish::ui::Color;
-using cutefish::ui::RectF;
-using cutefish::ui::SizeF;
+using properdesktop::ui::Color;
+using properdesktop::ui::RectF;
+using properdesktop::ui::SizeF;
 
 // A font size in points, in the toolkit's logical pixels.
 inline double points(double pointSize)
@@ -48,7 +48,7 @@ inline constexpr Color rgba(double r, double g, double b, double a)
 // position rounded (a 17-high child in 44 lands at 14).
 inline double layoutCenter(double parentExtent, double itemExtent)
 {
-    return cutefish::ui::rounding::halfAwayFromZero((parentExtent - std::ceil(itemExtent)) / 2);
+    return properdesktop::ui::rounding::halfAwayFromZero((parentExtent - std::ceil(itemExtent)) / 2);
 }
 
 // The application's glyphs, registered once as "vp-<name>".
@@ -56,19 +56,19 @@ void registerGlyphs();
 std::string glyph(const std::string& name);
 
 // A label: size in points (0 for the theme's), weight 0 for normal.
-cutefish::ui::Label* addLabel(cutefish::ui::View* parent, std::string text, double pointSize = 0,
-                              std::optional<cutefish::ui::ColorRecipe> color = std::nullopt, int weight = 0);
+properdesktop::ui::Label* addLabel(properdesktop::ui::View* parent, std::string text, double pointSize = 0,
+                              std::optional<properdesktop::ui::ColorRecipe> color = std::nullopt, int weight = 0);
 // Tabular figures: the OpenType "tnum" feature.
-void setTabular(cutefish::ui::Label* label);
+void setTabular(properdesktop::ui::Label* label);
 
 // The plates over the video draw no body of their own when the compositor
 // frosts the video behind them (a Wayland window); headless and in tests
 // they are solid plates.
 bool compositorGlass();
-void paintPlate(cutefish::ui::Painter& painter, const RectF& rect, double radius);
+void paintPlate(properdesktop::ui::Painter& painter, const RectF& rect, double radius);
 
 // A view taking a click: pressed, hovered and released inside call onClicked.
-class Clickable : public cutefish::ui::View
+class Clickable : public properdesktop::ui::View
 {
 public:
     bool acceptsPointer() const override { return isEnabled(); }
@@ -77,15 +77,15 @@ public:
 
     std::function<void()> onClicked;
     // Pressing with the right button.
-    std::function<void(cutefish::ui::PointF windowPosition)> onRightClicked;
+    std::function<void(properdesktop::ui::PointF windowPosition)> onRightClicked;
     std::function<void()> onDoubleClicked;
     std::function<void()> onHoverChanged;
 
 protected:
     void pointerEnter() override;
     void pointerLeave() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
-    void pointerRelease(const cutefish::ui::PointerEvent& event) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
+    void pointerRelease(const properdesktop::ui::PointerEvent& event) override;
     void enabledChanged() override;
 
     bool m_pressed = false;
@@ -106,23 +106,23 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
     void pointerEnter() override;
     void pointerLeave() override;
-    void pointerPress(const cutefish::ui::PointerEvent& event) override;
+    void pointerPress(const properdesktop::ui::PointerEvent& event) override;
     void enabledChanged() override;
 
 private:
     void hideToolTip();
 
-    cutefish::ui::Icon* m_glyph;
+    properdesktop::ui::Icon* m_glyph;
     std::string m_icon;
     double m_size;
     double m_iconSize;
     bool m_checked = false;
     std::string m_toolTip;
     bool m_toolTipShown = false;
-    cutefish::base::Timer m_toolTipTimer;
+    properdesktop::base::Timer m_toolTipTimer;
 };
 
 // A text button on the dark plates.
@@ -137,10 +137,10 @@ public:
 
 protected:
     void layout() override;
-    void paint(cutefish::ui::Painter& painter) override;
+    void paint(properdesktop::ui::Painter& painter) override;
 
 private:
-    cutefish::ui::Label* m_label;
+    properdesktop::ui::Label* m_label;
     bool m_prominent;
 };
 
@@ -150,32 +150,32 @@ class Tween
 {
 public:
     Tween(double value, std::chrono::milliseconds duration,
-          cutefish::ui::Animation::Easing easing = cutefish::ui::Animation::Easing::Linear);
+          properdesktop::ui::Animation::Easing easing = properdesktop::ui::Animation::Easing::Linear);
     ~Tween();
 
     double value() const { return m_value; }
     double target() const { return m_to; }
     bool isRunning() const;
     // Without a window (headless before show) the value jumps.
-    void setTarget(cutefish::ui::View* owner, double target);
+    void setTarget(properdesktop::ui::View* owner, double target);
     void jumpTo(double value);
 
     std::function<void()> onUpdate;
 
 private:
-    std::unique_ptr<cutefish::ui::Animation> m_animation;
-    cutefish::ui::Window* m_window = nullptr;
+    std::unique_ptr<properdesktop::ui::Animation> m_animation;
+    properdesktop::ui::Window* m_window = nullptr;
     std::chrono::milliseconds m_duration;
-    cutefish::ui::Animation::Easing m_easing;
+    properdesktop::ui::Animation::Easing m_easing;
     double m_value;
     double m_from;
     double m_to;
 };
 
 // A separator line one device pixel thick.
-void paintSeparator(cutefish::ui::Painter& painter, double x, double y, double width, Color color);
+void paintSeparator(properdesktop::ui::Painter& painter, double x, double y, double width, Color color);
 
 // The view's scroll bars drawn for the dark surfaces under them.
-void darkenBars(cutefish::ui::ScrollView* view);
+void darkenBars(properdesktop::ui::ScrollView* view);
 
 } // namespace views

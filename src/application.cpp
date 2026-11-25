@@ -15,7 +15,7 @@
 #include <format>
 #include <unistd.h>
 
-using namespace cutefish;
+using namespace properdesktop;
 namespace fs = std::filesystem;
 
 static std::string currentDirectory()

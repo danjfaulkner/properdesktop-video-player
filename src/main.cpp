@@ -15,13 +15,13 @@
 #include <chrono>
 #include <filesystem>
 
-using namespace cutefish;
+using namespace properdesktop;
 using namespace std::chrono_literals;
 
 int main(int argc, char** argv)
 {
     base::CommandLineParser parser;
-    parser.setApplicationDescription("Cutefish Video Player");
+    parser.setApplicationDescription("Proper Desktop Video Player");
     parser.setApplicationVersion(VIDEO_PLAYER_VERSION);
     parser.addHelpOption();
     parser.addVersionOption();
@@ -29,8 +29,8 @@ int main(int argc, char** argv)
     parser.process(argc, argv);
 
     ui::Application app(argc, argv);
-    app.setApplicationId("cutefish-video-player");
-    i18n::setDomain("cutefish-video-player");
+    app.setApplicationId("properdesktop-video-player");
+    i18n::setDomain("properdesktop-video-player");
     views::registerGlyphs();
 
     std::error_code error;
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 
     // The object goes up before the name, so a second launch that finds the
     // name always finds someone to hand its files to.
-    Application application(base::paths::cutefishConfig("video-player"));
+    Application application(base::paths::properdesktopConfig("video-player"));
     base::dbus::Connection* bus = app.sessionBus();
     if (bus) {
         application.publish(bus);

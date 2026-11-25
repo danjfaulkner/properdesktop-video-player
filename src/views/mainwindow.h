@@ -36,7 +36,7 @@ public:
     explicit MainWindow(Application& application);
     ~MainWindow();
 
-    cutefish::ui::Window& window() { return m_window; }
+    properdesktop::ui::Window& window() { return m_window; }
     // Expires with the window, for answers that arrive later.
     std::weak_ptr<bool> aliveToken() const { return m_alive; }
     Application& app() { return m_app; }
@@ -68,8 +68,8 @@ public:
     void openShortcuts();
     void openAbout();
     void showMediaInfo();
-    void openContextMenu(cutefish::ui::PointF windowPosition);
-    void openPlaylistMenu(int index, cutefish::ui::PointF windowPosition);
+    void openContextMenu(properdesktop::ui::PointF windowPosition);
+    void openPlaylistMenu(int index, properdesktop::ui::PointF windowPosition);
     void playIndex(int index);
     void playNext(bool automatic);
     void playPrevious();
@@ -97,7 +97,7 @@ public:
     static std::string delayText(double seconds);
 
     // Something the views show changed: the window's state, the player's.
-    cutefish::base::Signal<> stateChanged;
+    properdesktop::base::Signal<> stateChanged;
 
 private:
     class Root;
@@ -106,10 +106,10 @@ private:
     void retranslate();
     void buildMenus();
     void buildMainMenu();
-    void fillSubtitleMenu(cutefish::ui::Menu& subtitles);
-    void fillAudioMenu(cutefish::ui::Menu& audio);
-    void fillSpeedMenu(cutefish::ui::Menu& speed);
-    void fillChapterMenu(cutefish::ui::Menu& chapters);
+    void fillSubtitleMenu(properdesktop::ui::Menu& subtitles);
+    void fillAudioMenu(properdesktop::ui::Menu& audio);
+    void fillSpeedMenu(properdesktop::ui::Menu& speed);
+    void fillChapterMenu(properdesktop::ui::Menu& chapters);
     void bindShortcuts();
     void bindMpris();
     void applyLanguages();
@@ -118,7 +118,7 @@ private:
     void saveResume();
     void fileEnded();
     void fitToVideo();
-    cutefish::ui::SizeF fittedSize(Player::Size video) const;
+    properdesktop::ui::SizeF fittedSize(Player::Size video) const;
     void onPlayerChanged(Player::Property property);
     void updateChrome();
     void updateInhibitor();
@@ -129,10 +129,10 @@ private:
     Application& m_app;
     Player m_player;
     // Outlives the window that shows it.
-    std::unique_ptr<cutefish::ui::Menu> m_mainMenu;
+    std::unique_ptr<properdesktop::ui::Menu> m_mainMenu;
     // Goes after the window, which then closes with the picture still in it.
     std::unique_ptr<VideoSurface> m_closingVideo;
-    cutefish::ui::Window m_window;
+    properdesktop::ui::Window m_window;
     Root* m_root = nullptr;
     VideoView* m_video = nullptr;
     ControlBar* m_controlBar = nullptr;
@@ -153,19 +153,19 @@ private:
     std::vector<std::string> m_pendingSubtitles;
     double m_appliedInset = -1;
 
-    cutefish::ui::Menu m_contextMenu;
-    cutefish::ui::Menu m_playlistMenu;
+    properdesktop::ui::Menu m_contextMenu;
+    properdesktop::ui::Menu m_playlistMenu;
     int m_playlistMenuIndex = -1;
-    std::unique_ptr<cutefish::ui::FileChooser> m_fileChooser;
+    std::unique_ptr<properdesktop::ui::FileChooser> m_fileChooser;
 
-    cutefish::base::Timer m_idleTimer;
-    cutefish::base::Timer m_resumeTimer;
-    cutefish::base::Timer m_bufferingDelay;
-    cutefish::base::Timer m_panelDismissed;
+    properdesktop::base::Timer m_idleTimer;
+    properdesktop::base::Timer m_resumeTimer;
+    properdesktop::base::Timer m_bufferingDelay;
+    properdesktop::base::Timer m_panelDismissed;
     bool m_bufferingElapsed = false;
     bool m_dismissOutside = false;
-    cutefish::ui::PointF m_dismissPress;
-    std::vector<cutefish::base::Subscription> m_subscriptions;
-    cutefish::base::Subscription m_languageChanged;
+    properdesktop::ui::PointF m_dismissPress;
+    std::vector<properdesktop::base::Subscription> m_subscriptions;
+    properdesktop::base::Subscription m_languageChanged;
     std::shared_ptr<bool> m_alive = std::make_shared<bool>(true);
 };

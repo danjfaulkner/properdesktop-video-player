@@ -12,7 +12,7 @@
 #include <vector>
 
 // The player's MPRIS face (org.mpris.MediaPlayer2.<name>), for the Control
-// Center and other media controls, as cutefish-framework's MprisPlayer
+// Center and other media controls, as properdesktop-framework's MprisPlayer
 // served it: the window sets the state, requests come back as signals.
 class MprisServer
 {
@@ -47,7 +47,7 @@ public:
     };
 
     // Takes "org.mpris.MediaPlayer2." + serviceName on bus.
-    MprisServer(cutefish::base::dbus::Connection* bus, const std::string& serviceName, Description description);
+    MprisServer(properdesktop::base::dbus::Connection* bus, const std::string& serviceName, Description description);
     ~MprisServer();
 
     bool isRegistered() const { return m_registered; }
@@ -73,37 +73,37 @@ public:
     // After a seek or a jump: microseconds.
     void seeked(int64_t position);
 
-    cutefish::base::Signal<> quitRequested;
-    cutefish::base::Signal<> raiseRequested;
-    cutefish::base::Signal<bool> fullscreenRequested;
-    cutefish::base::Signal<> playRequested;
-    cutefish::base::Signal<> pauseRequested;
-    cutefish::base::Signal<> stopRequested;
-    cutefish::base::Signal<> nextRequested;
-    cutefish::base::Signal<> previousRequested;
+    properdesktop::base::Signal<> quitRequested;
+    properdesktop::base::Signal<> raiseRequested;
+    properdesktop::base::Signal<bool> fullscreenRequested;
+    properdesktop::base::Signal<> playRequested;
+    properdesktop::base::Signal<> pauseRequested;
+    properdesktop::base::Signal<> stopRequested;
+    properdesktop::base::Signal<> nextRequested;
+    properdesktop::base::Signal<> previousRequested;
     // Microseconds, relative.
-    cutefish::base::Signal<int64_t> seekRequested;
+    properdesktop::base::Signal<int64_t> seekRequested;
     // The track id and microseconds.
-    cutefish::base::Signal<const std::string&, int64_t> setPositionRequested;
-    cutefish::base::Signal<double> volumeRequested;
-    cutefish::base::Signal<double> rateRequested;
-    cutefish::base::Signal<LoopStatus> loopStatusRequested;
-    cutefish::base::Signal<bool> shuffleRequested;
-    cutefish::base::Signal<const std::string&> openUriRequested;
+    properdesktop::base::Signal<const std::string&, int64_t> setPositionRequested;
+    properdesktop::base::Signal<double> volumeRequested;
+    properdesktop::base::Signal<double> rateRequested;
+    properdesktop::base::Signal<LoopStatus> loopStatusRequested;
+    properdesktop::base::Signal<bool> shuffleRequested;
+    properdesktop::base::Signal<const std::string&> openUriRequested;
 
     static std::string toString(PlaybackStatus status);
     static std::string toString(LoopStatus status);
 
 private:
     void changedPlayer(const std::vector<std::string>& names);
-    cutefish::base::dbus::VariantMap typedMetadata() const;
+    properdesktop::base::dbus::VariantMap typedMetadata() const;
 
-    cutefish::base::dbus::Connection* m_bus;
+    properdesktop::base::dbus::Connection* m_bus;
     std::string m_name;
     bool m_registered = false;
     Description m_description;
-    std::unique_ptr<cutefish::base::dbus::Object> m_root;
-    std::unique_ptr<cutefish::base::dbus::Object> m_player;
+    std::unique_ptr<properdesktop::base::dbus::Object> m_root;
+    std::unique_ptr<properdesktop::base::dbus::Object> m_player;
 
     bool m_fullscreen = false;
     bool m_canControl = false;

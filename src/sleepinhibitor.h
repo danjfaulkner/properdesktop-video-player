@@ -24,8 +24,8 @@ public:
     };
 
     // The buses default to the loop's shared session and system ones.
-    explicit SleepInhibitor(cutefish::base::dbus::Connection* session = nullptr,
-                            cutefish::base::dbus::Connection* system = nullptr);
+    explicit SleepInhibitor(properdesktop::base::dbus::Connection* session = nullptr,
+                            properdesktop::base::dbus::Connection* system = nullptr);
     ~SleepInhibitor();
 
     Mode mode() const { return m_mode; }
@@ -37,9 +37,9 @@ public:
     // The ScreenSaver cookie or logind lock is held.
     bool isHeld() const { return m_cookie != 0 || m_suspendLock.isValid(); }
 
-    cutefish::base::Signal<> modeChanged;
+    properdesktop::base::Signal<> modeChanged;
     // A held inhibition arrived or went.
-    cutefish::base::Signal<> heldChanged;
+    properdesktop::base::Signal<> heldChanged;
 
 private:
     // Asks for mode's inhibition; an answer for an older generation is undone.
@@ -47,14 +47,14 @@ private:
     void release();
     void finish(uint64_t call);
 
-    cutefish::base::dbus::Connection* m_session;
-    cutefish::base::dbus::Connection* m_system;
+    properdesktop::base::dbus::Connection* m_session;
+    properdesktop::base::dbus::Connection* m_system;
     Mode m_mode = Mode::Off;
     // Bumped on every change, so a late reply for an older mode is undone.
     uint64_t m_generation = 0;
     uint32_t m_cookie = 0;
-    cutefish::base::dbus::UnixFd m_suspendLock;
+    properdesktop::base::dbus::UnixFd m_suspendLock;
     // Kept until answered: a dropped call would leave its inhibition behind.
-    std::map<uint64_t, cutefish::base::dbus::PendingCall> m_calls;
-    cutefish::base::WeakPtrFactory<SleepInhibitor> m_weakFactory{this};
+    std::map<uint64_t, properdesktop::base::dbus::PendingCall> m_calls;
+    properdesktop::base::WeakPtrFactory<SleepInhibitor> m_weakFactory{this};
 };

@@ -10,7 +10,7 @@
 
 class MainWindow;
 
-namespace cutefish::ui {
+namespace properdesktop::ui {
 class AboutDialog;
 class DialogWindow;
 class FileChooser;
@@ -37,9 +37,9 @@ private:
 
     MainWindow& m_owner;
     std::unique_ptr<OpenUrl> m_openUrl;
-    std::unique_ptr<cutefish::ui::DialogWindow> m_mediaInfo;
-    std::unique_ptr<cutefish::ui::DialogWindow> m_preferences;
-    std::unique_ptr<cutefish::ui::DialogWindow> m_shortcuts;
-    std::unique_ptr<cutefish::ui::AboutDialog> m_about;
-    std::unique_ptr<cutefish::ui::FileChooser> m_folderChooser;
+    std::unique_ptr<properdesktop::ui::DialogWindow> m_mediaInfo;
+    std::unique_ptr<properdesktop::ui::DialogWindow> m_preferences;
+    std::unique_ptr<properdesktop::ui::DialogWindow> m_shortcuts;
+    std::unique_ptr<properdesktop::ui::AboutDialog> m_about;
+    std::unique_ptr<properdesktop::ui::FileChooser> m_folderChooser;
 };

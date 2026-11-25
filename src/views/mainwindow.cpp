@@ -28,12 +28,12 @@
 #include <format>
 #include <numbers>
 
-using namespace cutefish;
-using namespace cutefish::ui;
+using namespace properdesktop;
+using namespace properdesktop::ui;
 using namespace std::chrono_literals;
 using views::white;
-using cutefish::i18n::format;
-using cutefish::i18n::tr;
+using properdesktop::i18n::format;
+using properdesktop::i18n::tr;
 
 static constexpr auto kDoubleClickInterval = 400ms;
 static constexpr double kStartDragDistance = 10;
@@ -545,7 +545,7 @@ MainWindow::MainWindow(::Application& application)
     Thumbnailer& thumbnailer = m_app.thumbnailer();
     m_subscriptions.push_back(thumbnailer.revisionChanged.connect([this] { m_controlBar->refresh(); }));
     m_subscriptions.push_back(thumbnailer.coverChanged.connect([this] { updateMpris(); }));
-    m_languageChanged = cutefish::ui::Application::instance()->languageChanged.connect([this] { retranslate(); });
+    m_languageChanged = properdesktop::ui::Application::instance()->languageChanged.connect([this] { retranslate(); });
 
     m_player.setVolume(settings.volume());
     m_player.setMuted(settings.muted());
@@ -1148,12 +1148,12 @@ void MainWindow::bindMpris()
 {
     MprisServer::Description description;
     description.identity = tr("Video Player");
-    description.desktopEntry = "cutefish-video-player";
+    description.desktopEntry = "properdesktop-video-player";
     description.supportedUriSchemes = {"file", "http", "https"};
     description.canQuit = true;
     description.canRaise = true;
     description.canSetFullscreen = true;
-    m_mpris = std::make_unique<MprisServer>(base::dbus::Connection::session(), "cutefish-video-player", description);
+    m_mpris = std::make_unique<MprisServer>(base::dbus::Connection::session(), "properdesktop-video-player", description);
     m_mpris->setCanControl(true);
     m_mpris->setMinimumRate(0.5);
     m_mpris->setMaximumRate(2);
@@ -1207,7 +1207,7 @@ void MainWindow::updateMpris()
     m_mpris->setVolume(m_player.muted() ? 0 : m_player.volume() / 100.0);
     m_mpris->setPosition(int64_t(std::lround(m_player.position() * 1e6)));
     MprisServer::Metadata metadata;
-    metadata.trackId = "/org/cutefish/VideoPlayer/Track/" + std::to_string(std::max(0, playlist.currentIndex()));
+    metadata.trackId = "/org/properdesktop/VideoPlayer/Track/" + std::to_string(std::max(0, playlist.currentIndex()));
     metadata.title = hasMedia() ? mediaName() : std::string();
     metadata.length = int64_t(std::lround(m_player.duration() * 1e6));
     metadata.url = m_player.source();
@@ -1571,7 +1571,7 @@ void MainWindow::toggleFullScreen()
 void MainWindow::close()
 {
     saveResume();
-    cutefish::ui::Application::instance()->quit();
+    properdesktop::ui::Application::instance()->quit();
 }
 
 void MainWindow::fitToLaunch()
